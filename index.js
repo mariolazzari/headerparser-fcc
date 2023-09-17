@@ -17,11 +17,13 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  const { headers } = req;
+  const { headers, ip } = req;
 
-  console.log(req);
-
-  res.json({ software: headers["user-agent"] });
+  res.json({
+    ipAddress: ip,
+    language: headers["accept-language"],
+    software: headers["user-agent"],
+  });
 });
 
 // listen for requests :)
